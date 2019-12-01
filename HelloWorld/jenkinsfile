@@ -1,0 +1,24 @@
+node{
+    jdk = tool name: 'JAVA_HOME'
+    env.JAVA_HOME = "${jdk}"
+
+    echo "jdk installation path is: ${jdk}"
+  
+  
+     stage('SCM Checkout'){
+        git 'https://github.com/haribabu-git/springboot1'    
+     }
+  
+  
+  
+     stage('Compile-package'){
+        def mvnHome = tool name: 'MAVEN_HOME', type: 'maven';
+        echo 'maven clean'
+        bat "${mvnHome}/bin/mvn -f SpringBoot/pom.xml clean package"
+    }
+     stage('Deployment'){
+       
+        bat 'del "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\SpringBoot-0.0.1-SNAPSHOT.war " && xcopy "C:\\Program Files (x86)\\Jenkins\\workspace\\springbootjenkinGitMavenPipe\\SpringBoot\\target\\SpringBoot-0.0.1-SNAPSHOT.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps"'
+      }
+
+}
