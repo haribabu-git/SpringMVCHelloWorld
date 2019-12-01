@@ -16,7 +16,7 @@ node{
     }
      stage('Deployment'){
        
-        bat 'del "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\SpringBoot-0.0.1-SNAPSHOT.war " && xcopy "C:\\Program Files (x86)\\Jenkins\\workspace\\springbootjenkinGitMavenPipe\\SpringBoot\\target\\SpringBoot-0.0.1-SNAPSHOT.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps"'
+        bat 'del "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps\\HelloWorld.war " && xcopy "C:\\Program Files (x86)\\Jenkins\\workspace\\SpringHelloWorld\\HelloWorld\\target\\HelloWorld.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 7.0\\webapps"'
       }
 
 }
